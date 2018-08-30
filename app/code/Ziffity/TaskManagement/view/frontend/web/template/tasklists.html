@@ -1,0 +1,12 @@
+<!-- ko foreach: lists -->
+<tr>
+    <td data-bind="text: ($index() + 1)"></td>
+    <td data-bind="text: name"></td>
+    <td data-bind="text: description"></td>
+    <td data-bind="text: start_time"></td>
+    <td data-bind="text: end_time"></td>
+    <td data-bind="text: assignee"></td>
+    <td data-bind="html: getStatus(status)"></td>
+    <td><a data-bind="attr:{href: '/task/index/edit/id/'+id}">Edit</a> | <a data-bind="click: $parent.removeItem, attr:{'data-id': id, class: 'hand'}">Delete</a></td>
+</tr>
+<!-- /ko -->

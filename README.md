@@ -8,7 +8,7 @@ Magento 2 code base
 
 ### Installation
 
-Download app.zip & unzip into base directory.
+Download zip & unzip into base directory.
 
 ```
 Path: {Base Dir}/app/code/Ziffity/TaskManagement
@@ -20,6 +20,7 @@ Path: {Base Dir}/app/code/Ziffity/TaskManagement
 
 ```
 php bin/magento setup:upgrade
+php bin/magento setup:di:compile
 php bin/magento setup:static-content:deploy
 php bin/magento cache:flush
 

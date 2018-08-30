@@ -1,0 +1,41 @@
+<?php /** @var $block \Ziffity\TaskManagement\Block\Index */ ?>
+<div class="header-bar">
+    <div class="actions-toolbar tr">
+        <div class="primary">
+            <a href="<?php echo $this->getUrl('task/index/add'); ?>" title="Add New Task" class="action submit primary cBtn btn-success">
+                <span><?php echo __('Add New Task'); ?></span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="data table base list" id="customTables">
+    <thead class="thead-default clearfix">
+        <th><?php echo __('#'); ?></th>
+        <th><?php echo __('Task Name'); ?></th>
+        <th><?php echo __('Task Description'); ?></th>
+        <th><?php echo __('Start Time'); ?></th>
+        <th><?php echo __('End Time'); ?></th>
+        <th><?php echo __('Assigned Person'); ?></th>
+        <th><?php echo __('Status'); ?></th>
+        <th><?php echo __('Action'); ?></th>
+    </thead>
+    <tbody id="taskLists" data-bind="scope: 'task-list'">
+        <tr id="loadingList"><td colspan="8"><?php echo __('Loading....'); ?></td></tr>
+        <!-- ko template: getTemplate() --><!-- /ko -->
+        <script type="text/x-magento-init">
+        {
+            "#taskLists": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "task-list": {
+                            "component" : "Ziffity_TaskManagement/js/tasklists",
+                            "template" : "Ziffity_TaskManagement/tasklists"
+                        }
+                    }
+                }
+            }
+        }
+        </script>
+    </tbody>
+</table>

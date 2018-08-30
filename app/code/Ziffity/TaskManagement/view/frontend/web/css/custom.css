@@ -1,0 +1,61 @@
+.cBtn {
+    height: 35px;
+}
+.cBtn.btn-danger {
+    background: red;
+    border: 1px solid red;
+}
+.cBtn.btn-success {
+    background: green;
+    border: 1px solid green;
+}
+.tr.actions-toolbar .primary{
+    float: right;
+}
+.tr.actions-toolbar .primary.fl{
+    float: left;
+}
+#customTables {
+    margin-top: 30px;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+}
+#customTables td, #customTables th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+#customTables tr:nth-child(even){background-color: #f2f2f2;}
+#customTables tr:hover {background-color: #ddd;}
+#customTables th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #ccc;
+    color: #000;
+}
+#loadingList{
+    text-align:center;
+}
+.st{
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 10px;
+}
+.status0{
+        background: orange;
+}
+.status1{
+    background: blue;
+}
+.status2{
+   background: green;
+}
+#taskForm {
+    width: 50%;
+}
+.hand {
+   cursor: pointer;
+}

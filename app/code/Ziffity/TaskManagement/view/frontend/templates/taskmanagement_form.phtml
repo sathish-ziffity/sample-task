@@ -1,0 +1,77 @@
+<?php
+
+/** @var $block \Ziffity\TaskManagement\Block\Index */
+
+$task = $block->getTask();
+$status = $block->status->getOptionArray();
+?>
+<form class="edt-form" action="<?php /* @escapeNotVerified */ echo $block->getFormAction(); ?>" id="taskForm" method="post" data-hasrequired="* Required Fields" data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <div class="field name required">
+            <label class="label" for="tName"><span><?php echo __('Task Name'); ?></span></label>
+            <div class="control">
+                <input name="name" id="tName" title="<?php echo __('Task Name'); ?>" value="<?php echo $task->getName(); ?>" class="input-text" type="text" required/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="tDescription"><span><?php echo __('Description'); ?></span></label>
+            <div class="control">
+                <textarea name="description" id="tDescription" title="<?php echo __('Description'); ?>" class="input-text" type="text" required><?php echo $task->getDescription(); ?></textarea>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="tStartTime"><span><?php echo __('Start Time'); ?></span></label>
+            <div class="control">
+                <input name="start_time" id="tStartTime" title="<?php echo __('Start Time'); ?>" type="text" value="<?php echo $task->getStartTime(); ?>" required readonly/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="tEndTime"><span><?php echo __('End Time'); ?></span></label>
+            <div class="control">
+                <input name="end_time" id="tEndTime" title="<?php echo __('End Time'); ?>" value="<?php echo $task->getEndTime(); ?>" class="input-text" type="text" required readonly/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="tAssignee"><span><?php echo __('Assigned Person'); ?></span></label>
+            <div class="control">
+                <input name="assignee" id="tAssignee" title="<?php echo __('Assigned Person'); ?>" value="<?php echo $task->getAssignee(); ?>" class="input-text" type="text" required/>
+            </div>
+        </div>
+        <div class="field name required">
+            <label class="label" for="tStatus"><span><?php echo __('Status'); ?></span></label>
+            <div class="control">
+                <select id="tStatus" name="status" title="<?php echo __('Status'); ?>" required>
+                    <?php 
+                    $taskStatus = $task->getStatus();
+                    foreach ($status as $key => $value){
+                        $sel = $taskStatus == $key ? ' selected' : '';
+                        echo '<option value="'.$key.'"'.$sel.'>'.$value->getText().'</option>';  
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar tr">
+        <div class="primary fl">
+            <a href="<?php echo $this->getUrl('task'); ?>" title="<?php echo __('Back'); ?>" class="action submit primary cBtn btn-danger">
+                <span><?php echo __('Back'); ?></span>
+            </a>
+        </div>
+        <div class="primary">
+            <button type="submit" title="<?php echo __('Save'); ?>" class="action submit primary cBtn">
+                <span><?php echo __('Save'); ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    require([
+        "jquery",
+        "mage/calendar"
+        ], function($){
+          $('#tStartTime').datetimepicker( { dateFormat: "dd/mm/yy" } );
+          $('#tEndTime').datetimepicker( { dateFormat: "dd/mm/yy" } );
+        });
+</script>
